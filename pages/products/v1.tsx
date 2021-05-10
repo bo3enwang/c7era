@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Typography, Grid, Card, CardContent, CardMedia } from '@material-ui/core';
+import { Container, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Image from '../../components/Image';
 import SectionHeader from '../../components/SectionHeader';

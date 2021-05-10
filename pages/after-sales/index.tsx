@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-import { Card, Container, Typography, Grid, Button, useMediaQuery, Paper } from '@material-ui/core';
+import { Container, Typography, Grid, useMediaQuery } from '@material-ui/core';
 import Image from '../../components/Image';
 import SectionHeader from '../../components/SectionHeader';
 
@@ -59,10 +59,7 @@ const Join = ({}: JoinProps) => {
                   <span>
                     C7承诺 「以换代修」
                     <br />
-                    <Typography component="span" variant="inherit" color="primary">
-
-                      
-                    </Typography>
+                    <Typography component="span" variant="inherit" color="primary"></Typography>
                   </span>
                 }
                 subtitle="消费者通过任意渠道购得C7正品商品出现质量问题，皆可通过C7官方公众号申请质保。"

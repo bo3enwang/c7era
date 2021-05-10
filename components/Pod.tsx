@@ -4,7 +4,7 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
-import Rating, { IconContainerProps } from '@material-ui/lab/Rating';
+import Rating from '@material-ui/lab/Rating';
 import AcUnitIcon from '@material-ui/icons/AcUnit';
 import DetailsIcon from '@material-ui/icons/Details';
 import GroupWorkIcon from '@material-ui/icons/GroupWork';

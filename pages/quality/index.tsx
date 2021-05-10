@@ -1,6 +1,6 @@
 import React from 'react';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import { Card, CardContent, Container, Typography, Grid, Button, useMediaQuery } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import { Card, CardContent, Container, Typography } from '@material-ui/core';
 import Rohs from './rohs';
 import TPD from './tpd';
 
@@ -23,11 +23,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Join = ({}: JoinProps) => {
-  const theme = useTheme();
-  const isMd = useMediaQuery(theme.breakpoints.up('md'), {
-    defaultMatches: true,
-  });
-
   const classes = useStyles();
 
   return (
