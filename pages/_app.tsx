@@ -14,10 +14,18 @@ import {
   DialogContent,
   DialogContentText,
   DialogTitle,
+  useMediaQuery,
+  Drawer,
+  List,
+  ListItem,
+  ListItemText,
+  Collapse,
 } from '@material-ui/core';
 import Link from '../components/Link';
 import { useRouter } from 'next/router';
 import AOS from 'aos';
+import MenuIcon from '@material-ui/icons/Menu';
+
 import 'aos/dist/aos.css';
 
 import '../styles/app.scss';
@@ -52,7 +60,11 @@ interface AppProps {
 const _App = ({ Component, pageProps }: AppProps) => {
   const router = useRouter();
   const [anchorEl, setAnchorEl] = useState<any>(null);
-  const [open, setOpen] = useState<boolean>(false);
+  const [open, setOpen] = useState<boolean>(true);
+  const [menuEl, setMenuEl] = useState<boolean>(false);
+
+  const matches = useMediaQuery('(min-width:600px)');
+  const [mProductOpen, setMProductOpen] = useState<boolean>(false);
 
   const handleClick = (event: any) => {
     setAnchorEl(event.currentTarget);
@@ -60,6 +72,11 @@ const _App = ({ Component, pageProps }: AppProps) => {
 
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const handleJump = (url: string) => {
+    router.push(url);
+    setMenuEl(false);
   };
 
   useEffect(() => {
@@ -81,7 +98,7 @@ const _App = ({ Component, pageProps }: AppProps) => {
           <Button
             autoFocus
             onClick={() => {
-              router.push('https://www.google.com/');
+              router.push('https://www.baidu.com/');
             }}
             color="primary"
           >
@@ -151,25 +168,125 @@ const _App = ({ Component, pageProps }: AppProps) => {
       </Menu>
       <header className="header sticky">
         <img className="header__logo" src="/img/logo.png" alt="" />
-        <nav className="nav">
-          <div className="links">
-            <Link className="nav-link" href="/">
-              <Button size="large">首页</Button>
-            </Link>
-            <Button size="large" onClick={handleClick}>
-              产品
-            </Button>
-            <Link className="nav-link" href="/quality">
-              <Button size="large">C7品质</Button>
-            </Link>
-            <Link className="nav-link" href="/after-sales">
-              <Button size="large">售后服务</Button>
-            </Link>
-            <Link className="nav-link" href="/joining">
-              <Button size="large">门店加盟</Button>
-            </Link>
+        {matches ? (
+          <nav className="nav">
+            <div className="links">
+              <Link className="nav-link" href="/">
+                <Button size="large">首页</Button>
+              </Link>
+              <Button size="large" onClick={handleClick}>
+                产品
+              </Button>
+              <Link className="nav-link" href="/quality">
+                <Button size="large">C7品质</Button>
+              </Link>
+              <Link className="nav-link" href="/after-sales">
+                <Button size="large">售后服务</Button>
+              </Link>
+              <Link className="nav-link" href="/joining">
+                <Button size="large">门店加盟</Button>
+              </Link>
+            </div>
+          </nav>
+        ) : (
+          <div className="mobile-menu">
+            <MenuIcon
+              fontSize="large"
+              onClick={() => {
+                setMenuEl(true);
+              }}
+            />
+            <Drawer
+              anchor="right"
+              open={menuEl}
+              // onClick={() => {
+              //   setMenuEl(false);
+              // }}
+              classes={{
+                paper: 'drawer-width',
+              }}
+            >
+              <List>
+                <ListItem
+                  button
+                  onClick={() => {
+                    handleJump('/');
+                  }}
+                >
+                  <ListItemText
+                    primary="首页"
+                    onClick={() => {
+                      handleJump('/');
+                    }}
+                  />
+                </ListItem>
+                <ListItem
+                  button
+                  onClick={() => {
+                    setMProductOpen(!mProductOpen);
+                  }}
+                >
+                  <ListItemText primary="产品" />
+                </ListItem>
+                <Collapse in={mProductOpen} timeout="auto" unmountOnExit>
+                  <List component="div" disablePadding>
+                    <ListItem
+                      button
+                      style={{ paddingLeft: 30 }}
+                      onClick={() => {
+                        handleJump('/products/v1');
+                      }}
+                    >
+                      <ListItemText primary="V1 系列" />
+                    </ListItem>
+                    <ListItem
+                      button
+                      style={{ paddingLeft: 30 }}
+                      onClick={() => {
+                        handleJump('/products/v2');
+                      }}
+                    >
+                      <ListItemText primary="V2 系列" />
+                    </ListItem>
+                    <ListItem
+                      button
+                      style={{ paddingLeft: 30 }}
+                      onClick={() => {
+                        handleJump('/products/pods');
+                      }}
+                    >
+                      <ListItemText primary="烟弹系列" />
+                    </ListItem>
+                  </List>
+                </Collapse>
+                <ListItem
+                  button
+                  onClick={() => {
+                    handleJump('/quality');
+                  }}
+                >
+                  <ListItemText primary="C7品质" />
+                </ListItem>
+                <ListItem
+                  button
+                  onClick={() => {
+                    handleJump('/after-sales');
+                  }}
+                >
+                  <ListItemText primary="售后服务" />
+                </ListItem>
+                <ListItem
+                  button
+                  onClick={() => {
+                    handleJump('/joining');
+                  }}
+                >
+                  <ListItemText primary="门店加盟" />
+                </ListItem>
+              </List>
+            </Drawer>
           </div>
-        </nav>
+        )}
       </header>
       <main className="main">
         <Component {...pageProps} />
@@ -177,13 +294,13 @@ const _App = ({ Component, pageProps }: AppProps) => {
       <footer className="footer">
         <Container>
           <Grid container spacing={3}>
-            <Grid item xs={4}>
+            <Grid item sm={4} xs={12}>
               <div className="footer__info__item">
                 <h3 className="footer__info__item-label">C7 新闻</h3>
                 <div>C7 实验室</div>
               </div>
             </Grid>
-            <Grid item xs={4}>
+            <Grid item sm={4} xs={12}>
               <div className="footer__info__item">
                 <h3 className="footer__info__item-label">C7 责任</h3>
                 <div className="footer__info__item-description">
@@ -193,7 +310,7 @@ const _App = ({ Component, pageProps }: AppProps) => {
                 </div>
               </div>
             </Grid>
-            <Grid item xs={4}>
+            <Grid item sm={4} xs={12}>
               <div className="footer__info__item">
                 <h3 className="footer__info__item-label">合作咨询</h3>
                 <div className="contact">

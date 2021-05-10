@@ -1,6 +1,15 @@
 .index {
+  @media only screen and (max-width: 600px) {
+    &__banner {
+      height: 300px;
+    }
+  }
+  @media only screen and (min-width: 600px) {
+    &__banner {
+      height: 700px;
+    }
+  }
   &__banner {
-    height: 700px;
     &__image {
       width: 100%;
     }

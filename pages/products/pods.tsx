@@ -20,7 +20,7 @@ const Products = ({}: ProductsProps) => {
     <div className={classes.main}>
       <Container>
         <Grid container spacing={2}>
-          <Grid item xs={6}>
+          <Grid item sm={6} xs={12}>
             <Pod
               title="夏日西瓜"
               description="冰凉夏日的一股清凉"
@@ -31,7 +31,7 @@ const Products = ({}: ProductsProps) => {
               hit={2}
             ></Pod>
           </Grid>
-          <Grid item xs={6}>
+          <Grid item sm={6} xs={12}>
             <Pod
               title="冰爽可乐"
               description="可乐味扑面而来，让你一口劲爽"
@@ -42,7 +42,7 @@ const Products = ({}: ProductsProps) => {
               hit={4}
             ></Pod>
           </Grid>
-          <Grid item xs={6}>
+          <Grid item sm={6} xs={12}>
             <Pod
               title="甜心草莓"
               description="浓浓的草莓香味，难以忘却"
@@ -53,7 +53,7 @@ const Products = ({}: ProductsProps) => {
               hit={2}
             ></Pod>
           </Grid>
-          <Grid item xs={6}>
+          <Grid item sm={6} xs={12}>
             <Pod
               title="绿豆冰棍"
               description="夏日冰棍的感觉，童年的记忆"

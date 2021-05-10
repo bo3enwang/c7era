@@ -77,7 +77,7 @@ const IndexPage = () => {
             </Grid>
           </Grid>
           <Grid container justify="space-around" spacing={6}>
-            <Grid item xs={3}>
+            <Grid item sm={4} xs={12}>
               <Product></Product>
             </Grid>
           </Grid>

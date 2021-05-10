@@ -14,6 +14,13 @@
     color: red;
   }
 }
+
+@media only screen and (max-width: 600px) {
+  header {
+    padding: 0 18px;
+  }
+}
+
 .header {
   display: flex;
   flex-direction: row;
@@ -41,6 +48,15 @@
       align-items: center;
     }
   }
+
+  .mobile-menu {
+    flex: 1;
+    text-align: right;
+    padding: 0 10px;
+  }
+}
+.drawer-width {
+  width: 220px;
 }
 
 .c7era {
@@ -48,10 +64,21 @@
   flex-direction: column;
   min-height: 100vh;
 }
+
+@media only screen and (max-width: 600px) {
+  main {
+    margin: 9px 0;
+  }
+}
+@media only screen and (min-width: 600px) {
+  main {
+    margin: 36px 0;
+  }
+}
+
 main {
   flex: auto;
   min-height: 0;
-  margin: 36px 0;
 }
 
 .footer {
