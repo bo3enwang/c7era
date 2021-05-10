@@ -1,0 +1,123 @@
+.banner {
+  width: 100%;
+  background: #000;
+  color: #fff;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  img {
+    margin-right: 30px;
+    margin-left: 30px;
+    height: 70px;
+    width: auto;
+    color: red;
+  }
+}
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background: #fff;
+  z-index: 1000;
+  border-bottom: 1px solid #eaeaea;
+  &.sticky {
+    position: sticky;
+    top: 0;
+  }
+
+  &__logo {
+    height: 50px;
+  }
+
+  .nav {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    .links {
+      display: flex;
+      align-items: center;
+    }
+  }
+}
+
+.c7era {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+main {
+  flex: auto;
+  min-height: 0;
+  margin: 36px 0;
+}
+
+.footer {
+  width: 100%;
+  margin: auto 0 auto;
+  padding: 0 0;
+  background-color: #ffffff;
+  border-top: 1px solid #ffffff;
+  border-bottom: 1px solid #ffffff;
+  overflow: hidden;
+
+  &__info {
+    height: 230px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-around;
+
+    &__item {
+      flex: 1;
+      &-label {
+        color: #494949;
+        font-size: 22px;
+      }
+      &-description {
+        color: #494949;
+      }
+      .contact {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        &-name {
+          font-size: 24px;
+          margin-right: 30px;
+        }
+        &-wx {
+          height: 100px;
+        }
+      }
+    }
+  }
+}
+
+.parallax > use {
+  animation: move-forever 25s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
+}
+.parallax > use:nth-child(1) {
+  animation-delay: -2s;
+  animation-duration: 7s;
+}
+.parallax > use:nth-child(2) {
+  animation-delay: -3s;
+  animation-duration: 10s;
+}
+.parallax > use:nth-child(3) {
+  animation-delay: -4s;
+  animation-duration: 13s;
+}
+.parallax > use:nth-child(4) {
+  animation-delay: -5s;
+  animation-duration: 20s;
+}
+@keyframes move-forever {
+  0% {
+    transform: translate3d(-90px, 0, 0);
+  }
+  100% {
+    transform: translate3d(85px, 0, 0);
+  }
+}

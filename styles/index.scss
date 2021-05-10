@@ -1,0 +1,14 @@
+.index {
+  &__banner {
+    height: 700px;
+    &__image {
+      width: 100%;
+    }
+  }
+}
+.product {
+  &__cover {
+    width: 300px;
+    height: auto;
+  }
+}
